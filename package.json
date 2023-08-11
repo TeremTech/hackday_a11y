@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "axe-html-reporter": "^2.2.3"
+  }
+}
