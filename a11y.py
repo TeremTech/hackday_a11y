@@ -10,11 +10,10 @@ from report_modifier import modify_cleanup, modify_processed, modify_progress, m
 def main():
     start_time = time.time()
     urls = [url]
-
+    generate_html_report_header()
     driver = webdriver.Firefox()
     urls = crawlsite(url)
     print(urls)
-    generate_html_report_header()
     generate_html_report_summary()
     total_violations = 0
     for a in urls:
