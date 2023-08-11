@@ -53,17 +53,17 @@ def generate_html_report_header(output_file="report.html"):
 
         progress[value]::-webkit-progress-value {
         background-image:
-            -webkit-linear-gradient(-45deg, 
-                                    transparent 33%, rgba(0, 0, 0, .1) 33%, 
+            -webkit-linear-gradient(-45deg,
+                                    transparent 33%, rgba(0, 0, 0, .1) 33%,
                                     rgba(0,0, 0, .1) 66%, transparent 66%),
-            -webkit-linear-gradient(top, 
-                                    rgba(255, 255, 255, .25), 
+            -webkit-linear-gradient(top,
+                                    rgba(255, 255, 255, .25),
                                     rgba(0, 0, 0, .25)),
             -webkit-linear-gradient(left, #09c, #f44);
 
-            border-radius: 2px; 
+            border-radius: 2px;
             background-size: 35px 20px, 100% 100%, 100% 100%;
-        }        
+        }
 
         table {
             width: 100%;
@@ -148,9 +148,7 @@ def generate_html_report(json_data, output_file="report.html"):
     with open("a11y.json", "r", encoding="utf-8") as jsonfiletoread:
         json_data = jsonfiletoread.read()
     data = json.loads(json_data)
-    totalcount = 0
-    for issue in data['violations']:
-        totalcount += len(issue['nodes'])
+    totalcount = sum(len(issue['nodes']) for issue in data['violations'])
 
     # Start the HTML content
     html_content = """

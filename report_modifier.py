@@ -1,4 +1,5 @@
 import config
+import shutil
 
 
 def modify_line_in_report(line_num, new_content):
@@ -12,7 +13,6 @@ def modify_line_in_report(line_num, new_content):
                 temp_file.write(line)
 
     # Replace the original file with the modified temporary file
-    import shutil
     shutil.move("temp.txt", "report.html")
 
 
@@ -20,7 +20,7 @@ def modify_cleanup():
     modify_progress(100)
     remove_remaining()
     shrink_progress()
-    remove_refresh()    
+    remove_refresh()
 
 
 def remove_refresh():
