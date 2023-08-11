@@ -170,10 +170,7 @@ def generate_html_report(json_data, output_file="report.html"):
             </tr>
     """
 
-    # Add each issue to the HTML content
-    i = 0
-    for issue in data['violations']:
-        i += 1
+    for i, issue in enumerate(data['violations'], start=1):
         severity_class = issue['impact']
         html_content += f"""
         <tr class="{severity_class}">
@@ -181,7 +178,7 @@ def generate_html_report(json_data, output_file="report.html"):
             <td>{issue['id']}</td>
             <td>{issue['description']}</td>
             <td>{issue['impact']}</td>
-            <td>{str(len(issue['nodes']))}</td>
+            <td>{len(issue['nodes'])}</td>
             <td><a href='{issue['helpUrl']}'>{issue['id']}</td>
         </tr>
         """
